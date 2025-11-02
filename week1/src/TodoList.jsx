@@ -1,4 +1,4 @@
-export default function TodoList() {
+export default function TodoList({item, hasCompleted,buttonClick}) {
 //   const todos = [
 //     { id: 1, todo: "写高数作业" },
 //     { id: 2, todo: "学习 react" },
@@ -30,6 +30,15 @@ export default function TodoList() {
 //   )
 
 // input 得到todo
+const { id,todo,completed} = item
+return (
+    <div className={`list-item ${item.completed ? 'completed' : ''}`} key={id}>
+            
+    <input type='checkbox' onChange={()=> hasCompleted(id)} value={completed} />
+    <ul>{todo}</ul>
+    <button className='delButton' onClick={()=> buttonClick(id)} >Delete</button>
+  </div>
+)
 
 
 }

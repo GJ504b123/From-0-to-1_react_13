@@ -138,12 +138,13 @@ const hasCompleted =(id)=>{
       {/* 用 () 包裹 JSX */}
         {todos.map((item) => (
           // $ 间有个空格
-          <div className={`list-item ${item.completed ? 'completed' : ''}`} key={item.id}>
-            
-            <input type='checkbox' onChange={()=> hasCompleted(item.id)} value={item.completed} />
-            <ul>{item.todo}</ul>
-            <button className='delButton' onClick={()=> buttonClick(item.id)} >Delete</button>
-          </div>
+          <TodoList
+            key={item.id}
+            value={item.completed}
+            item={item}
+            hasCompleted = {hasCompleted}
+            buttonClick = {buttonClick}
+            />
         ))}
       </div>
     </>
